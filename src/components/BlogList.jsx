@@ -55,6 +55,9 @@ const BlogList = () => {
     // FUNZIONE GESTIONE INFO CAMPI
     function handleFormData(e) {
 
+        // GESTIONE VALUE A SECONDA DEL TIPO DI INPUT
+        const value = e.target.type === "" ? e.target.checked : e.target.value;
+
         //SETTA TRAMITE SETSTATE L'OGGETTO CON LE INFO PRESI DAI CAMPI DEL FORM
         setFormData((currentFormData) => ({
             ...currentFormData,
