@@ -65,11 +65,35 @@ const BlogList = () => {
         }));
     }
 
+
+    //FUNZIONE GESTIONE INVIO DELL'INTERO FORM
+    function handleSubmit(e) {
+        e.preventDefault();
+        setBlogs((currentBlogs) => [...currentBlogs, {
+            id:
+                currentBlogs.length === 0 ? 1 : currentBlogs[currentBlogs.length - 1].id + 1,
+            ...formData
+        }]);
+        //RESETTO IL FORM
+        setFormData(initialFormData);
+    }
+
+    // FUNZIONE CANCELLAZIONE BLOG
+    function deleteBlog(idBlog) {
+        // NUOVO ARRAY DA SOSTITUIRE ALLO STATE BLOGS
+        const updateBlogs = blogs.filter((blog) => {
+            return blog.id !== idBlog;
+        })
+        // SOSTITUZIONE
+        setBlogs(updateBlogs);
+    }
+
+
     return (
         <>
             <h1>QUESTO è UN POSTO SICURO PER I NERD</h1>
 
-            <form>
+            <form action="#" onSubmit={handleSubmit}>
                 {/* valore titolo blog */}
                 <input
                     type="text"
@@ -108,7 +132,7 @@ const BlogList = () => {
                     placeholder='categoria del blog'
                 />
 
-                <button>Cerca</button>
+                <button>Aggiungi</button>
 
 
             </form >
@@ -127,6 +151,9 @@ const BlogList = () => {
                         <span>{blog.autore}</span>
                         <p>{blog.contenuto}</p>
                         <span>{blog.categoria} </span>
+                        <button onClick={() => deleteBlog(blog.id)}>
+                            Cancella
+                        </button>
                     </div>
 
                 ))
