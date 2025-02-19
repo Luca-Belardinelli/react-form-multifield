@@ -54,8 +54,6 @@ const BlogList = () => {
 
     // FUNZIONE GESTIONE INFO CAMPI
     function handleFormData(e) {
-        // GESTIONE VALUE A SECONDA DEL TIPO DI INPUT
-        const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
 
         //SETTA TRAMITE SETSTATE L'OGGETTO CON LE INFO PRESI DAI CAMPI DEL FORM
         setFormData((currentFormData) => ({
@@ -68,11 +66,11 @@ const BlogList = () => {
         <>
             <h1>QUESTO è UN POSTO SICURO PER I NERD</h1>
 
-            <form action="#">
+            <form>
                 {/* valore titolo blog */}
                 <input
                     type="text"
-                    titolo="titolo"
+                    name="titolo"
                     onChange={handleFormData}
                     value={formData.titolo}
                     placeholder='titolo del blog'
@@ -82,7 +80,7 @@ const BlogList = () => {
                 {/* valore autore blog */}
                 <input
                     type="text"
-                    titolo="titolo"
+                    name="autore"
                     onChange={handleFormData}
                     value={formData.autore}
                     placeholder='autore del blog'
@@ -91,7 +89,7 @@ const BlogList = () => {
                 {/* valore contenuto blog */}
                 <textarea
                     type="text"
-                    titolo="titolo"
+                    name="contenuto"
                     onChange={handleFormData}
                     value={formData.contenuto}
                     placeholder='contenuto del blog'
@@ -101,7 +99,7 @@ const BlogList = () => {
                 {/* valore categoria blog */}
                 <input
                     type="text"
-                    titolo="titolo"
+                    name="categoria"
                     onChange={handleFormData}
                     value={formData.categoria}
                     placeholder='categoria del blog'
